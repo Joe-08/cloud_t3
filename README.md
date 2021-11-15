@@ -24,11 +24,11 @@ Una de las preguntas que se pueden venir a la mente es cómo sabe la base de dat
 
 En este ejemplo podemos observar que la tabla tiene tres columnas y ***country*** es nuestra llave de partición, lo que significa que se dividen las filas basadas en el valor de nuestra llave de partición y serán almacenadas en un nodo y los datos se distribuirán automaticamente alrededor de los nodos en el *cluster*.
 
-[!Tabla de particion](imagen_2021-11-15_171116.png)
+![Tabla de particion](imagen_2021-11-15_171116.png)
 
 Los datos particionados se verían de esta forma:
 
-[!Particion]()
+![Particion]()
 
 El usuario es el que elige la llave de partición.
 
