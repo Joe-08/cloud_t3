@@ -34,3 +34,28 @@ El usuario es el que elige la llave de partición.
 
 ## Replicación
 
+Para explicar la replicación, se tomará el siguiente ejemplo, el cual cada nodo tiene números asignados que son los *tokens* de partición y cada nodo es asignado un set de tokens que poseen. En este caso el nodo 0 tiene los tokens 84 a 0, el siguiente de 1 a 17 y asi sucesivamente.
+
+![imagen](imagen_2021-11-15_172547.png)
+
+Cuando añades una llave de partición a una tabla, ese valor se *hashea* automáticamente a un valor *token*, y gracias a ellos Cassandra sabe dónde almacenar y recuperar los datos. La llave de partición es como la dirección de los datos.
+
+![imagen](imagen_2021-11-15_172616.png)
+
+
+![imagen](imagen_2021-11-15_172647.png)
+
+
+![imagen](imagen_2021-11-15_172827.png)
+
+
+![imagen](imagen_2021-11-15_172905.png)
+
+
+![imagen](imagen_2021-11-15_172939.png)
+
+
+![imagen](imagen_2021-11-15_173127.png)
+
+
+![imagen](imagen_2021-11-15_173159.png)
