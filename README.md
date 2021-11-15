@@ -42,7 +42,7 @@ En este caso se muestra un factor de replicación de 1, que significa una copia 
 
 ![imagen](imagen_2021-11-15_172547.png)
 
-Sin embargo, este número puede incrementar, al subir a dps el número de anillos aumentó en uno y ahora dos nodos tendrán esa partición.
+Sin embargo, este número puede incrementar, al subir a dos el número de anillos aumentó en uno y ahora dos nodos tendrán esa partición.
 
 ![imagen](imagen_2021-11-15_172616.png)
 
@@ -50,7 +50,10 @@ Al aumentar a un factor de replicación de tres, se añade otro anillo y otra co
 
 ![imagen](imagen_2021-11-15_172647.png)
 
+Para entender cómo los datos se almacenan y recuperan veremos el siguiente ejemplo. Dado un factor de replicación de tres queremos escribir algunos datos, por lo que para manejar la solicitud se escoge cualquier nodo, que será el nodo coordinador. Cualquier nodo puede ser un nodo coordinador. 
 
+El número 59 es el *token* de partición que fue *hasheado* de la llave de partición para los datos que estamos escribiendo. Vemos que este es el valor de *token* de nuestra partición ejemplo. Como se tiene un factor de replicación de tres, hay tres nodos que poseen el rango de *token* que contiene a 59, en este caso serían los nodos 67, 83 y 0.
+Luego el coordinador se va directo a los tres nodos y cada nodo tiene una copia.
 
 ![imagen](imagen_2021-11-15_172827.png)
 
