@@ -28,7 +28,7 @@ En este ejemplo podemos observar que la tabla tiene tres columnas y ***country**
 
 Los datos particionados se verían de esta forma:
 
-![Particion](imagen_2021-11-15_152045.png)
+![Particion](imagen_2021-11-15_172045.png)
 
 El usuario es el que elige la llave de partición.
 
