@@ -73,6 +73,6 @@ Para explicar la consistencia que tiene Cassandra se hará con un ejemplo. Se ti
 
 Para la operación de lectura, el cliente hace una solicitud, el coordinador lee desde dos nodos y el resultado va de vuelta al cliente. No importa cuáles dos nodos, mientras que estos tengan los datos que se quieran.
 
-Al usar esta combinación de escritura y lectura quorum, se llama ***consistencia inmediata***.
-
 ![imagen](imagen_2021-11-15_173159.png)
+
+Al usar esta combinación de escritura y lectura de quorum, se llama ***consistencia inmediata***.
