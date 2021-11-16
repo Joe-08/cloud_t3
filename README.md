@@ -52,20 +52,27 @@ Al aumentar a un factor de replicación de tres, se añade otro anillo y otra co
 
 Para entender cómo los datos se almacenan y recuperan veremos el siguiente ejemplo. Dado un factor de replicación de tres queremos escribir algunos datos, por lo que para manejar la solicitud se escoge cualquier nodo, que será el nodo coordinador. Cualquier nodo puede ser un nodo coordinador. 
 
-El número 59 es el *token* de partición que fue *hasheado* de la llave de partición para los datos que estamos escribiendo. Vemos que este es el valor de *token* de nuestra partición ejemplo. Como se tiene un factor de replicación de tres, hay tres nodos que poseen el rango de *token* que contiene a 59, en este caso serían los nodos 67, 83 y 0.
-Luego el coordinador se va directo a los tres nodos y cada nodo tiene una copia.
+El número 59 es el *token* de partición que fue *hasheado* de la llave de partición para los datos que estamos escribiendo. Vemos que este es el valor de *token* de nuestra partición ejemplo. 
 
 ![imagen](imagen_2021-11-15_172827.png)
 
-
+Como se tiene un factor de replicación de tres, hay tres nodos que poseen el rango de *token* que contiene a 59, en este caso serían los nodos 67, 83 y 0.
+Luego el coordinador se va directo a los tres nodos y cada nodo tiene una copia.
 
 ![imagen](imagen_2021-11-15_172905.png)
 
+Si un nodo está de baja durante el proceso, Cassandra guarda lo que se conoce como un *hint* y cuando el nodo vuelve a estar en línea, el *hint* se va hacia el nodo antes caído.
 
 ![imagen](imagen_2021-11-15_172939.png)
 
+## Consistencia
+
+Para explicar la consistencia que tiene Cassandra se hará con un ejemplo. Se tiene una partición con un factor de partición por defecto de tres, lo que hace que cualquier escritura será almacenada en tres nodos. Además de esto, se define un nivel de consistencia *quorum*, lo que significa que para cualquier solicitud la mayoría de nodos debe estar disponible. En este caso, Cassandra esperará por una verificación de dos nodos antes de hacer una escritura en la base de datos; si el nivel de consistencia no se puede obtener para una operación, esta fallará.
 
 ![imagen](imagen_2021-11-15_173127.png)
 
+Para la operación de lectura, el cliente hace una solicitud, el coordinador lee desde dos nodos y el resultado va de vuelta al cliente. No importa cuáles dos nodos, mientras que estos tengan los datos que se quieran.
+
+Al usar esta combinación de escritura y lectura quorum, se llama ***consistencia inmediata***.
 
 ![imagen](imagen_2021-11-15_173159.png)
